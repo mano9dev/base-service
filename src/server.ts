@@ -1,12 +1,19 @@
 import "reflect-metadata"
 import { Request, Response } from "express";
 import app from "./app";
+import config from "./config/config";
+import dbConnexion from "./db"
 
 
 
-
-function bootstrap() {
-  const PORT = process.env.PORT || 3001
+async function bootstrap() {
+  const PORT = config.app.port || 3001
+  try {
+    await dbConnexion()
+  } catch (error) {
+    console.log("dbConnexionError");
+    process.exit(1)
+  }
 
   app.get('/', (req: Request, res: Response) => {
 

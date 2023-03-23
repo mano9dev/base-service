@@ -1,6 +1,13 @@
-import { Prop } from "@typegoose/typegoose";
+import { Prop, modelOptions } from "@typegoose/typegoose";
 import { BaseClass } from "../base/base.class";
 import { AccountProvider, AccountStatus, IAuth } from "./auth.interfaces";
+
+@modelOptions({
+  schemaOptions: {
+    // Add createdAt and updatedAt fields
+    timestamps: true,
+  },
+})
 
 export default class Auth extends BaseClass implements IAuth {
 
