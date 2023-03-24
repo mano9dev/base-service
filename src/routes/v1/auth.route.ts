@@ -1,4 +1,4 @@
-import AuthController from '@/modules/auth/auth.controller';
+import AuthController from '../../modules/auth/auth.controller';
 import express, { Router } from 'express';
 import Container from 'typedi';
 

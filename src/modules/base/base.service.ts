@@ -2,10 +2,9 @@ import { Document, Model } from "mongoose";
 import { Inject, Service } from "typedi";
 import { BaseServiceMethods, Params } from "./base.interfaces";
 
-@Service()
-export default class BaseService<T extends Document> implements BaseServiceMethods<T>{
+export default abstract class BaseService<T extends Document> implements BaseServiceMethods<T>{
   constructor(
-    @Inject() readonly model: Model<T>
+    readonly model: Model<T>
   ) { }
   async find(params: Params): Promise<T[]> {
 

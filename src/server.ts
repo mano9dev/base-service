@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import app from "./app";
 import config from "./config/config";
 import dbConnexion from "./db"
+import v1Routes from "./routes/v1";
 
 
 
@@ -22,6 +23,8 @@ async function bootstrap() {
       message: 'Welcome server is a live😂😂👈👈',
     })
   })
+
+  app.use("/v1", v1Routes)
   app.listen(PORT)
 }
 

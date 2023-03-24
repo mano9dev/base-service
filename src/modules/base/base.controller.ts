@@ -4,12 +4,12 @@ import Request from "./base.http";
 import { BaseControllerMethods } from "./base.interfaces";
 import BaseService from "./base.service";
 
-@Service()
-export default class BaseController<T extends Document> implements BaseControllerMethods<T>{
+export default abstract class BaseController<T extends Document> implements BaseControllerMethods<T>{
   constructor(
-    @Inject() readonly service: BaseService<T>
+    readonly service: BaseService<T>
   ) { }
   find(req: Request): Promise<T[]> {
+
     return this.service.find(req.query);
   }
   findOne(req: Request): Promise<T> {

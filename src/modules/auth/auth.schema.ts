@@ -1,4 +1,5 @@
 import { Prop, modelOptions } from "@typegoose/typegoose";
+import mongoose, { Schema } from "mongoose";
 import { BaseClass } from "../base/base.class";
 import { AccountProvider, AccountStatus, IAuth } from "./auth.interfaces";
 
@@ -35,7 +36,7 @@ export default class Auth extends BaseClass implements IAuth {
   @Prop({ enum: ["enabled", "disabled", "suspended"], default: "enabled", type: String })
   status: AccountStatus;
 
-  @Prop()
+  @Prop({ type: Schema.Types.Mixed })
   metadata: any;
 
   @Prop({ enum: ["email", "google", "facebook", "twitter"], default: "email", type: String })
